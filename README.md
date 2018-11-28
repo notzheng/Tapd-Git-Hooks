@@ -8,7 +8,7 @@ Tapd 平台的的源码关联功能目前只支持 Github 、 Gitlab 与 Tgit �
 
 例如，Gogs 与 Github 请求头的差异：
 
-|       Dogs       |      Github       |                 内容                 |
+|       Gogs       |      Github       |                 内容                 |
 | :--------------: | :---------------: | :----------------------------------: |
 | X-Gogs-Delivery  | X-GitHub-Delivery | 884d89aa-f1fb-11e8-869b-9bf6f51d58b5 |
 |   X-Gogs-Event   |  X-GitHub-Event   |                 push                 |
@@ -72,7 +72,7 @@ Gogs 的请求头格式与 Github 相同，所以需要在项目中使用 Github
 
 对应关系：
 
-|       Dogs       |      Github       |                 内容                 |
+|       Gogs       |      Github       |                 内容                 |
 | :--------------: | :---------------: | :----------------------------------: |
 | X-Gogs-Delivery  | X-GitHub-Delivery | 884d89aa-f1fb-11e8-869b-9bf6f51d58b5 |
 |   X-Gogs-Event   |  X-GitHub-Event   |                 push                 |
