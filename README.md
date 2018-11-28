@@ -99,7 +99,7 @@ Gogs 的请求头格式与 Github 相同，所以需要在项目中使用 Github
 
 ### 
 
-###Gitee
+### Gitee
 
 Gitee 的请求头格式与 Gitlab 相同，所以需要在项目中使用 Gitlab 源码关联功能。
 
