@@ -123,6 +123,39 @@ Gitee 的请求头格式与 Gitlab 相同，所以需要在项目中使用 Gitla
   }
 ```
 
+### Coding
+Coding 的请求头格式也与 Gitlab 相同，对应关系：
+
+| Gitlab   | Coding   | 内容      |
+| :------: | :------: | :-------: |
+| X-Gitlab-Event | X-Coding-Event | push |
+|X-Gitlab-Delivery|X-Coding-Delivery| a7d40a09-0c6c-4998-be63-e50df8651c79|
+
+注意在 Tapd 配置 Gitlab 时，可以不开启 Secret Token。
+![](./screenshots/gitlab.png)
+
+```ini
+server {
+    listen 80;
+
+    location / {
+        proxy_set_header X-Gitlab-Delivery $http_X_Coding_Delivery ;
+        proxy_set_header X-Gitlab-Event $http_X_Coding_Event ;
+        proxy_set_header accept "*/*";
+        proxy_set_header accept-encoding "gzip, deflate";
+        proxy_set_header cache-control "no-cache";
+        
+        # 这个非常重要，否则 Coding 发送 Webhook 时，不会自动添加 content-type 导致 Webhook 虽然发送成功，但对 TAPD 并没有实际效果。
+        proxy_set_header content-type "application/json";
+
+        proxy_pass https://www.tapd.cn;
+    }
+}
+```
+
+配置好域名并指向上面的 nginx 所在服务器后，就可以在 Coding 中做配置了：
+![](screenshots/coding.png)
+
 # License
 
 [![WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](http://www.wtfpl.net/)
